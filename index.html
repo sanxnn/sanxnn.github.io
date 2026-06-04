@@ -1,420 +1,708 @@
-<!DOCTYPE html>
-<html lang="id" data-theme="light" data-lang="id">
+<!doctype html>
+<html lang="id" class="scroll-smooth">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sanxnn | Portfolio</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <title>Muhammad Hasan Al Bukhori | Fullstack & DevOps</title>
     <link
-      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="favicon_io/apple-touch-icon.png"
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="favicon_io/favicon-32x32.png" 
     />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="favicon_io/favicon-16x16.png"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="manifest" href="favicon_io/site.webmanifest" />
+    <link rel="icon" type="image/x-icon" href="favicon_io/favicon.ico" />
+
+    <meta name="theme-color" content="#030712" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="favicon_io/android-chrome-192x192.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="512x512"
+      href="favicon_io/android-chrome-512x512.png"
+    />
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Alpine.js CDN (Buat animasi interaktif instant tanpa ribet) -->
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"
+    ></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              brand: "#059669", // Emerald Green khas SaaS premium
+              darkbg: "#030712", // Slate 950 murni
+            },
+            animation: {
+              "pulse-slow": "pulse 6s cubic-bezier(0.4, 0, 0.6, 1) infinite",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Efek Background Grid Lines ala SaaS Premium */
+      .bg-grid-pattern {
+        background-size: 40px 40px;
+        background-image:
+          linear-gradient(
+            to right,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          ),
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0.03) 1px,
+            transparent 1px
+          );
+      }
+      /* Masking gradient biar gridnya cuma keliatan pudar di tengah */
+      .bg-grid-mask {
+        mask-image: radial-gradient(circle at 50% 50%, white, transparent 80%);
+        -webkit-mask-image: radial-gradient(
+          circle at 50% 50%,
+          white,
+          transparent 80%
+        );
+      }
+    </style>
   </head>
-  <body>
-    <!-- Header / Navbar -->
-    <header class="navbar">
-      <div class="container">
-        <a href="#" class="logo">sanxnn@local~#</a>
-        <nav class="nav-links" id="navLinks">
-          <a href="#about" class="nav-link" data-i18n="nav.about">Tentang</a>
-          <a href="#education" class="nav-link" data-i18n="nav.education"
-            >Pendidikan</a
+  <body
+    class="bg-darkbg text-slate-300 antialiased selection:bg-brand selection:text-white relative"
+  >
+    <!-- BACKGROUND GRID SYSTEM & GLOW LIGHTS -->
+    <div class="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+      <div class="absolute inset-0 bg-grid-pattern bg-grid-mask"></div>
+      <!-- Ambient Glow Lights (Animasi Pudar Pelan) -->
+      <div
+        class="absolute top-[-10%] left-[20%] w-[600px] h-[600px] bg-brand/10 rounded-full blur-[150px] animate-pulse-slow"
+      ></div>
+      <div
+        class="absolute top-[40%] right-[-10%] w-[400px] h-[400px] bg-emerald-500/5 rounded-full blur-[120px] animate-pulse-slow"
+      ></div>
+    </div>
+
+    <!-- NAVBAR -->
+    <nav
+      class="sticky top-0 z-50 bg-darkbg/70 backdrop-blur-xl border-b border-white/5"
+    >
+      <div
+        class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between"
+      >
+        <a
+          href="#"
+          class="text-sm font-bold tracking-wider text-white flex items-center gap-2 group"
+        >
+          <span
+            class="w-2 h-2 rounded-full bg-brand group-hover:scale-125 transition duration-300"
+          ></span>
+          sanxnn._
+        </a>
+        <div
+          class="flex space-x-6 text-xs uppercase tracking-widest font-medium text-slate-400"
+        >
+          <a href="#about" class="hover:text-white transition duration-200"
+            >About</a
           >
-          <a href="#experience" class="nav-link" data-i18n="nav.experience"
-            >Pengalaman</a
+          <a href="#experience" class="hover:text-white transition duration-200"
+            >Experience</a
           >
-          <a href="#projects" class="nav-link" data-i18n="nav.projects"
-            >Project</a
+          <a href="#projects" class="hover:text-white transition duration-200"
+            >Projects</a
           >
-          <div class="nav-actions">
-            <button
-              id="theme-toggle"
-              class="btn-icon"
-              aria-label="Toggle theme"
-            >
-              <i class="fas fa-sun"></i>
-            </button>
-            <button
-              id="lang-toggle"
-              class="btn-icon"
-              aria-label="Toggle language"
-            >
-              <span id="lang-flag">🇮🇩</span>
-            </button>
-          </div>
-        </nav>
-        <div class="mobile-menu-btn" id="mobileMenuBtn">
-          <i class="fas fa-bars"></i>
+          <a href="#skills" class="hover:text-white transition duration-200"
+            >Skills</a
+          >
         </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header
+      id="about"
+      class="max-w-5xl mx-auto min-h-screen px-4 sm:px-6 lg:px-8 py-28 md:py-40 text-center relative z-10"
+    >
+      <!-- Tag Badge -->
+      <div
+        class="inline-flex items-center gap-2 px-3 py-1.5 text-xs font-medium text-brand bg-brand/10 border border-brand/20 rounded-full mb-6 transform hover:scale-105 transition duration-300"
+      >
+        <span class="w-1.5 h-1.5 rounded-full bg-brand animate-ping"></span>
+        Available for Production-Ready Deployment
+      </div>
+
+      <!-- Main Heading dengan Efek Gradient Clip -->
+      <h1
+        class="text-4xl sm:text-6xl font-extrabold tracking-tight text-transparent bg-clip-text bg-gradient-to-b from-white to-slate-400 max-w-4xl mx-auto leading-[1.1] mb-6"
+      >
+        Crafting Scalable Applications & Automated Cloud Infrastructures.
+      </h1>
+
+      <p
+        class="text-slate-400 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+      >
+        Halo, saya
+        <span class="text-white font-medium">Muhammad Hasan Al Bukhori</span>
+        alias <span class="text-brand font-mono font-bold">sanxnn</span>,
+        mahasiswa D4 Teknik Informatika di Politeknik Negeri Jember. Berfokus
+        pada rekayasa perangkat lunak, efisiensi kode, dan perancangan sistem
+        berbasis web yang andal serta siap produksi.  
+      </p>
+
+      <!-- CTA Buttons -->
+      <div class="flex flex-wrap justify-center gap-4">
+        <a
+          href="#projects"
+          class="bg-white hover:bg-slate-100 text-darkbg font-semibold px-6 py-3 rounded-lg transition duration-200 shadow-xl shadow-white/5 text-sm"
+        >
+          Explore Projects
+        </a>
+        <a
+          href="cv_hasan_al_bukhori.pdf"
+          download
+          class="bg-white/5 border border-white/10 hover:border-white/20 hover:bg-white/10 text-white font-medium px-6 py-3 rounded-lg transition duration-200 text-sm flex items-center gap-2"
+        >
+          📥 Download CV (PDF)
+        </a>
       </div>
     </header>
 
-    <!-- Hero -->
-    <section id="hero" class="hero">
-      <div class="container hero-content">
-        <h1 class="name">Muhammad Hasan Al Bukhori</h1>
-        <p class="role" data-i18n="hero.role">
-          Web Developer • Mobile Developer • UI/UX Designer
-        </p>
-        <p class="subtitle" data-i18n="hero.subtitle">
-          Saya Sanxnn — mahasiswa Teknik Informatika di Politeknik Negeri Jember
-          yang bersemangat membangun solusi digital.
-        </p>
-        <div class="hero-links">
-          <a
-            href="#projects"
-            class="btn btn-primary"
-            data-i18n="hero.projects-btn"
-            >Lihat Project</a
-          >
-          <a href="#" class="btn btn-outline" data-i18n="hero.cv-btn"
-            >Download CV</a
-          >
-        </div>
-        <div class="social-links">
-          <a
-            href="https://github.com/sanxnn"
-            target="_blank"
-            aria-label="GitHub"
-            ><i class="fab fa-github"></i
-          ></a>
-          <a
-            href="https://www.linkedin.com/in/sanxnn/"
-            target="_blank"
-            aria-label="LinkedIn"
-            ><i class="fab fa-linkedin"></i
-          ></a>
-          <a
-            href="https://instagram.com/bbe.lovedd_"
-            target="_blank"
-            aria-label="Instagram"
-            ><i class="fab fa-instagram"></i
-          ></a>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about" class="section">
-      <div class="container">
-        <h2 class="section-title" data-i18n="about.title">Tentang Saya</h2>
-        <div class="about-content fade-up">
-          <p data-i18n="about.p1">
-            Halo! Saya <strong>Sanxnn</strong>, mahasiswa
-            <strong>Teknik Informatika</strong> di
-            <strong>Politeknik Negeri Jember</strong>.
-          </p>
-          <p data-i18n="about.p2">
-            Saya fokus pada pengembangan web & aplikasi, dengan pengalaman
-            magang selama 6 bulan di
-            <strong>PT Universal Big Data, Malang</strong>.
-          </p>
-          <p data-i18n="about.p3">
-            Saya percaya teknologi harus dibangun dengan prinsip:
-            <em>clean code, user-centric design, dan scalable architecture</em>.
-          </p>
-
-          <div class="about-skills">
-            <h3 data-i18n="about.skills">Keahlian</h3>
-            <div class="skills-grid">
-              <!-- Backend -->
-              <div class="skill-category">
-                <h4><i class="fas fa-server"></i> Backend</h4>
-                <div class="skill-item">
-                  <i class="fab fa-php"></i>
-                  <span>PHP</span>
-                  <span class="skill-level">Advanced</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-laravel"></i>
-                  <span>Laravel</span>
-                  <span class="skill-level">Advanced</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-node-js"></i>
-                  <span>Node.js</span>
-                  <span class="skill-level">Intermediate</span>
-                </div>
-              </div>
-
-              <!-- Frontend -->
-              <div class="skill-category">
-                <h4><i class="fas fa-laptop-code"></i> Frontend</h4>
-                <div class="skill-item">
-                  <i class="fab fa-js"></i>
-                  <span>JavaScript</span>
-                  <span class="skill-level">Advanced</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-react"></i>
-                  <span>React</span>
-                  <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-html5"></i>
-                  <span>HTML / CSS</span>
-                  <span class="skill-level">Advanced</span>
-                </div>
-              </div>
-
-              <!-- Mobile -->
-              <div class="skill-category">
-                <h4><i class="fas fa-mobile-alt"></i> Mobile</h4>
-                <div class="skill-item">
-                  <i class="fa-brands fa-flutter"></i>
-                  <span>Flutter / Dart</span>
-                  <span class="skill-level">Intermediate</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fab fa-android"></i>
-                  <span>Kotlin (Android)</span>
-                  <span class="skill-level">Basic</span>
-                </div>
-              </div>
-
-              <!-- Tools & Others -->
-              <div class="skill-category">
-                <h4><i class="fas fa-toolbox"></i> Tools & Others</h4>
-                <div class="skill-item">
-                  <i class="fab fa-git-alt"></i>
-                  <span>Git & GitHub</span>
-                  <span class="skill-level">Proficient</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-database"></i>
-                  <span>MySQL</span>
-                  <span class="skill-level">Advanced</span>
-                </div>
-                <div class="skill-item">
-                  <i class="fas fa-paint-brush"></i>
-                  <span>UI/UX Design</span>
-                  <span class="skill-level">Intermediate</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Education -->
-    <section id="education" class="section">
-      <div class="container">
-        <h2 class="section-title" data-i18n="education.title">Pendidikan</h2>
-        <div class="timeline">
-          <div class="timeline-item fade-up">
-            <div class="timeline-badge">
-              <i class="fas fa-graduation-cap"></i>
-            </div>
-            <div class="timeline-content">
-              <span class="timeline-date">2025 – Sekarang</span>
-              <h3 class="timeline-title" data-i18n="education.polije.degree">
-                D4 Teknik Informatika
-              </h3>
-              <p>
-                <strong data-i18n="education.polije.school"
-                  >Politeknik Negeri Jember</strong
-                >
-              </p>
-              <p data-i18n="education.polije.detail">
-                Semester 2 — Fokus: Web Development, Mobile Apps, UI/UX
-              </p>
-            </div>
-          </div>
-          <div class="timeline-item fade-up">
-            <div class="timeline-badge"><i class="fas fa-school"></i></div>
-            <div class="timeline-content">
-              <span class="timeline-date">2022 – 2025</span>
-              <h3 class="timeline-title" data-i18n="education.smk.degree">
-                Rekayasa Perangkat Lunak (RPL)
-              </h3>
-              <p>
-                <strong data-i18n="education.smk.school"
-                  >SMK PGRI 05 Jember</strong
-                >
-              </p>
-              <p data-i18n="education.smk.detail">
-                Lulus: 2025 | Mapel Unggulan: Pemrograman Web, Database, OOP
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Experience -->
-    <section id="experience" class="section alt-bg">
-      <div class="container">
-        <h2 class="section-title" data-i18n="experience.title">Pengalaman</h2>
-        <div class="timeline">
-          <!-- FREELANCE -->
-          <div class="timeline-item fade-up">
-            <div class="timeline-badge"><i class="fas fa-laptop-code"></i></div>
-            <div class="timeline-content">
-              <span class="timeline-date">2024 – Sekarang</span>
-              <h3 class="timeline-title">Freelance — Web Developer</h3>
-              <p><strong>Remote / Independen</strong></p>
-              <p data-i18n="experience.freelance_desc">
-                Mengembangkan website dan aplikasi berbasis web untuk berbagai
-                klien menggunakan Laravel, Node.js, dan MySQL. Menangani
-                pembuatan sistem CRUD, autentikasi, dashboard admin, integrasi
-                API, optimasi performa, UI/UX refinement, serta deployment dan
-                maintenance server (VPS & Cloud).
-              </p>
-            </div>
-          </div>
-
-          <!-- MAGANG -->
-          <div class="timeline-item fade-up">
-            <div class="timeline-badge"><i class="fas fa-briefcase"></i></div>
-            <div class="timeline-content">
-              <span class="timeline-date">Jan 2025 – Jun 2025</span>
-              <h3 class="timeline-title">Magang — Web Developer</h3>
-              <p><strong>PT Universal Big Data</strong>, Malang</p>
-              <p data-i18n="experience.intern_desc">
-                Mengembangkan sistem berbasis web menggunakan Laravel dan React.
-                Terlibat dalam integrasi API, optimasi performa aplikasi, serta
-                penyempurnaan UI/UX sesuai kebutuhan user.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Projects -->
-    <section id="projects" class="section">
-      <div class="container">
-        <h2 class="section-title" data-i18n="projects.title">Project</h2>
-        <div class="projects-grid">
-          <!-- Project 1 -->
-          <div class="project-card fade-up">
-            <div class="project-img bg-gradient-blue">
-              <i class="fas fa-landmark fa-2x"></i>
-            </div>
-            <div class="project-content">
-              <span class="project-date">2025</span>
-              <h3 data-i18n="projects.hmjti.title">COMPANY PROFILE HMJTI</h3>
-              <p data-i18n="projects.hmjti.desc">
-                Website resmi Himpunan Mahasiswa Jurusan Teknologi Informasi —
-                Polije. Menampilkan profil, struktur, dan kegiatan HMJTI.
-              </p>
-              <div class="project-tags">
-                <span class="tag">HTML</span>
-                <span class="tag">Vanilla CSS</span>
-                <span class="tag">Poppins</span>
-              </div>
-              <a
-                href="https://github.com/sanxnn/COMPANY-PROFILE-HMJTI"
-                class="btn btn-outline btn-sm"
-                target="_blank"
-                aria-label="Lihat source code di GitHub"
-              >
-                <i class="fab fa-github"></i> Source Code
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 2 -->
-          <div class="project-card fade-up">
-            <div class="project-img bg-gradient-indigo">
-              <i class="fas fa-book-quran fa-2x"></i>
-            </div>
-            <div class="project-content">
-              <span class="project-date">2024</span>
-              <h3 data-i18n="projects.quran.title">Al-Qur’an Mobile App</h3>
-              <p data-i18n="projects.quran.desc">
-                Aplikasi baca Al-Qur’an & terjemahan Bahasa Indonesia — tugas
-                sekolah menggunakan Flutter.
-              </p>
-              <div class="project-tags">
-                <span class="tag">Flutter</span>
-                <span class="tag">Dart</span>
-                <span class="tag">API Quran</span>
-              </div>
-              <a
-                href="https://github.com/sanxnn/alquran-app"
-                class="btn btn-outline btn-sm"
-                target="_blank"
-                aria-label="Lihat source code di GitHub"
-              >
-                <i class="fab fa-github"></i> Source Code
-              </a>
-            </div>
-          </div>
-
-          <!-- Project 3 -->
-          <div class="project-card fade-up">
-            <div class="project-img bg-gradient-cyan">
-              <i class="fas fa-book fa-2x"></i>
-            </div>
-            <div class="project-content">
-              <span class="project-date">2025</span>
-              <h3 data-i18n="projects.perpus.title">
-                e-Perpus (Digital Perpustakaan)
-              </h3>
-              <p data-i18n="projects.perpus.desc">
-                Sistem perpustakaan digital untuk sekolah/kampus — manajemen
-                buku, peminjaman, & pengembalian.
-              </p>
-              <div class="project-tags">
-                <span class="tag">PHP Native</span>
-                <span class="tag">MySQL</span>
-                <span class="tag">Bootstrap</span>
-              </div>
-              <span class="btn btn-disabled btn-sm" aria-label="Proyek privat">
-                <i class="fas fa-lock"></i> Privat
-              </span>
-            </div>
-          </div>
-        </div>
-        <!-- Penutup halus (opsional) -->
-        <p
-          class="text-center"
-          style="
-            margin-top: 2.5rem;
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-          "
-          data-i18n="projects.footer"
+    <!-- CONTACT QUICK BAR (SaaS Minimalist Grid) -->
+    <section class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 relative z-10">
+      <div
+        class="grid grid-cols-1 sm:grid-cols-3 border border-white/5 rounded-xl bg-white/[0.02] backdrop-blur-sm divide-y sm:divide-y-0 sm:divide-x divide-white/5 text-center text-xs font-mono tracking-wide text-slate-400"
+      >
+        <a
+          href="mailto:hasanalbukhori@outlook.com"
+          class="hover:text-brand hover:bg-white/[0.01] py-4 transition duration-200"
         >
-          Dan masih banyak project lain yang sedang dikembangkan.<br />
-          Kunjungi
-          <a
-            href="https://projectgue.biz.id"
-            target="_blank"
-            style="color: var(--accent); font-weight: 600"
-            >projectgue.biz.id</a
-          >
-          untuk melihat daftar lengkapnya.
-        </p>
+          hasanalbukhori@outlook.com
+        </a>
+        <a
+          href="https://github.com/sanxnn"
+          target="_blank"
+          class="hover:text-brand hover:bg-white/[0.01] py-4 transition duration-200"
+        >
+          github.com/sanxnn
+        </a>
+        <a
+          href="https://linkedin.com/in/sanxnn"
+          target="_blank"
+          class="hover:text-brand hover:bg-white/[0.01] py-4 transition duration-200"
+        >
+          linkedin.com/sanxnn
+        </a>
       </div>
     </section>
 
-    <footer class="footer">
-      <div class="container">
-        <p>
-          © 2025 Sanxnn. Built with
-          <i class="fas fa-heart" style="color: #e53935"></i>
-          and clean code.
+    <!-- EXPERIENCE SECTION -->
+    <section
+      id="experience"
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/5 relative z-10"
+    >
+      <div class="mb-12">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-2">
+          // 01. PROFESSIONAL CAREER
+        </h2>
+        <p class="text-xl sm:text-2xl font-bold text-white">
+          Pengalaman Industri & Lapangan
         </p>
-        <p class="footer-sub">Crafting web & mobile apps with passion.</p>
+      </div>
+
+      <!-- SaaS Style Stacked Cards -->
+      <div class="space-y-4">
+        <!-- Card Magang -->
+        <div
+          class="group border border-white/5 bg-white/[0.01] hover:bg-white/[0.02] p-6 rounded-xl transition duration-300 flex flex-col md:flex-row md:justify-between md:items-start gap-4"
+        >
+          <div class="space-y-2">
+            <div class="flex items-center gap-2">
+              <h3
+                class="text-base font-bold text-white group-hover:text-brand transition duration-200"
+              >
+                Web Developer & DevOps Intern
+              </h3>
+              <span
+                class="text-[10px] bg-brand/10 text-brand px-2 py-0.5 rounded-full border border-brand/20 font-medium font-mono"
+                >6 BULAN</span
+              >
+            </div>
+            <p class="text-sm font-medium text-slate-400">
+              PT Universal Big Data, Lowokwaru, Malang
+            </p>
+            <p class="text-xs text-slate-500 leading-relaxed max-w-2xl">
+              Bertanggung jawab penuh dalam siklus migrasi data, pengelolaan
+              container deployment, dan maintenance core engine web produksi.
+            </p>
+          </div>
+          <div class="flex flex-wrap md:flex-col items-end gap-2 text-right">
+            <span class="text-xs font-mono text-slate-500 whitespace-nowrap"
+              >Apr — Sep 2024</span
+            >
+            <div class="flex gap-1.5 text-[10px] font-mono text-slate-400">
+              <span class="bg-white/5 px-2 py-0.5 border border-white/5 rounded"
+                >eschool.ac.id</span
+              >
+              <span class="bg-white/5 px-2 py-0.5 border border-white/5 rounded"
+                >nobox.ai</span
+              >
+            </div>
+          </div>
+        </div>
+
+        <!-- Card Freelance & Joki -->
+        <div
+          class="group border border-white/5 bg-white/[0.01] hover:bg-white/[0.02] p-6 rounded-xl transition duration-300 flex flex-col md:flex-row md:justify-between md:items-start gap-4"
+        >
+          <div class="space-y-4 w-full">
+            <div class="space-y-1">
+              <div class="flex items-center gap-2">
+                <h3
+                  class="text-base font-bold text-white group-hover:text-brand transition duration-200"
+                >
+                  Server & Field Technician
+                </h3>
+                <span
+                  class="text-[10px] bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded-full border border-blue-500/20 font-medium font-mono"
+                  >LIVE</span
+                >
+              </div>
+              <p class="text-sm font-medium text-slate-400">
+                zaha.net Balung Lor, WIFI Local Provider
+              </p>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Konfigurasi routing Mikrotik lapangan, manajemen alokasi server
+                distribusi, dan troubleshooting jaringan lokal.
+              </p>
+            </div>
+
+            <div class="space-y-1 border-t border-white/5 pt-4">
+              <div class="flex items-center gap-2">
+                <h3
+                  class="text-base font-bold text-white group-hover:text-brand transition duration-200"
+                >
+                  Founder & Fullstack Solution
+                </h3>
+                <span
+                  class="text-[10px] bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded-full border border-purple-500/20 font-medium font-mono"
+                  >2025+</span
+                >
+              </div>
+              <p class="text-sm font-medium text-slate-400">
+                Usaha Joki kliniksintak
+              </p>
+              <p class="text-xs text-slate-500 leading-relaxed">
+                Menyelesaikan masalah arsitektur kode kustom, perbaikan bug
+                query SQL, optimasi middleware, dan penyusunan sistem berbasis
+                web.
+              </p>
+            </div>
+          </div>
+          <div
+            class="text-xs font-mono text-slate-500 md:text-right whitespace-nowrap"
+          >
+            2024 — Present
+          </div>
+        </div>
+
+        <!-- Card Mentor -->
+        <div
+          class="group border border-white/5 bg-white/[0.01] hover:bg-white/[0.02] p-6 rounded-xl transition duration-300 flex flex-col md:flex-row md:justify-between md:items-start gap-4"
+        >
+          <div class="space-y-2">
+            <h3
+              class="text-base font-bold text-white group-hover:text-brand transition duration-200"
+            >
+              Bootcamp Mentor — LKS Provinsi Jawa Timur
+            </h3>
+            <p class="text-xs text-slate-500 leading-relaxed max-w-2xl">
+              Dipercaya membimbing delegasi kompetensi keahlian teknologi
+              perangkat lunak aplikasi web untuk bersiap menghadapi kompetisi
+              tingkat provinsi.
+            </p>
+          </div>
+          <div
+            class="text-xs font-mono text-slate-500 md:text-right whitespace-nowrap"
+          >
+            2024
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS SECTION (DYNAMICS ALPINJS TABS WITH SMOOTH TRANSITION) -->
+    <section
+      id="projects"
+      x-data="{ currentTab: 'kampus' }"
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/5 relative z-10"
+    >
+      <div
+        class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4"
+      >
+        <div>
+          <h2
+            class="text-xs font-bold uppercase tracking-widest text-brand mb-2"
+          >
+            // 02. REPOSITORIES
+          </h2>
+          <p class="text-xl sm:text-2xl font-bold text-white">
+            Project Vault Showcase
+          </p>
+        </div>
+
+        <!-- Tab Controls Premium Borderless Style -->
+        <div
+          class="flex bg-white/[0.02] p-1 rounded-xl border border-white/5 text-xs font-medium self-start md:self-auto"
+        >
+          <button
+            @click="currentTab = 'kampus'"
+            :class="currentTab === 'kampus' ? 'bg-white/10 text-white shadow-md' : 'text-slate-400 hover:text-white'"
+            class="px-4 py-2 rounded-lg transition duration-200"
+          >
+            Kampus Era
+          </button>
+          <button
+            @click="currentTab = 'gabut'"
+            :class="currentTab === 'gabut' ? 'bg-white/10 text-white shadow-md' : 'text-slate-400 hover:text-white'"
+            class="px-4 py-2 rounded-lg transition duration-200"
+          >
+            Infrastructure
+          </button>
+          <button
+            @click="currentTab = 'smk'"
+            :class="currentTab === 'smk' ? 'bg-white/10 text-white shadow-md' : 'text-slate-400 hover:text-white'"
+            class="px-4 py-2 rounded-lg transition duration-200"
+          >
+            SMK Legacy
+          </button>
+        </div>
+      </div>
+
+      <!-- TAB CONTENT: KAMPUS -->
+      <div
+        x-show="currentTab === 'kampus'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        class="grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <h4 class="font-bold text-white text-base">siprespro</h4>
+            <p class="text-xs text-slate-400 mt-2 mb-6 leading-relaxed">
+              Sistem manajemen presensi terpadu untuk absensi mahasiswa tingkat
+              perkuliahan.
+            </p>
+          </div>
+          <div class="flex gap-2 text-[10px] font-mono text-slate-400">
+            <span class="bg-white/5 px-2 py-0.5 rounded">Fullstack PHP</span
+            ><span class="bg-white/5 px-2 py-0.5 rounded">MySQL</span>
+          </div>
+        </div>
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <h4 class="font-bold text-white text-base">url-lookup</h4>
+            <p class="text-xs text-slate-400 mt-2 mb-6 leading-relaxed">
+              Integrasi domain lookup utility dan tools WHOIS via eksternal API.
+            </p>
+          </div>
+          <div class="flex gap-2 text-[10px] font-mono text-slate-400">
+            <span class="bg-white/5 px-2 py-0.5 rounded">API Integration</span
+            ><span class="bg-white/5 px-2 py-0.5 rounded">Node/PHP</span>
+          </div>
+        </div>
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <h4 class="font-bold text-white text-base">perpus-jti</h4>
+            <p class="text-xs text-slate-400 mt-2 mb-6 leading-relaxed">
+              Sistem otomasi manajemen database sirkulasi buku internal
+              perpustakaan jurusan JTI Polije.
+            </p>
+          </div>
+          <div class="flex gap-2 text-[10px] font-mono text-slate-400">
+            <span class="bg-white/5 px-2 py-0.5 rounded">Library Engine</span>
+          </div>
+        </div>
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300 flex flex-col justify-between"
+        >
+          <div>
+            <h4 class="font-bold text-white text-base">
+              Company Profile HMJTI
+            </h4>
+            <p class="text-xs text-slate-400 mt-2 mb-6 leading-relaxed">
+              Web profile representatif Himpunan Mahasiswa Jurusan Teknologi
+              Informasi.
+            </p>
+          </div>
+          <div class="flex gap-2 text-[10px] font-mono text-slate-400">
+            <span class="bg-white/5 px-2 py-0.5 rounded"
+              >Responsive Design</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB CONTENT: DEVOPS / INFRASTRUCTURE -->
+      <div
+        x-show="currentTab === 'gabut'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        class="grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300"
+        >
+          <h4 class="font-bold text-white text-base">
+            Home Mini Server (Proxmox VE Environment)
+          </h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Setup cluster virtualisasi bare-metal di rumah berbasis Mini PC
+            untuk meluncurkan berbagai LXC container, Docker orchestrations, dan
+            bot utility terisolasi.
+          </p>
+        </div>
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300"
+        >
+          <h4 class="font-bold text-white text-base">uptime-server</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Aplikasi ringkas pemantau status, latensi, dan ketersediaan node
+            server internal secara berkala (serupa Uptime Kuma).
+          </p>
+        </div>
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300"
+        >
+          <h4 class="font-bold text-white text-base">sanxnn-bot</h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Messaging automation robot untuk platform WhatsApp yang ditenagai
+            oleh Node.js engine environment.
+          </p>
+        </div>
+        <div
+          class="border border-white/5 bg-white/[0.01] hover:border-white/10 p-6 rounded-xl transition duration-300"
+        >
+          <h4 class="font-bold text-white text-base">
+            IoT Smart Door Lock & herolabs
+          </h4>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">
+            Eksperimen kontrol fisik kunci pintu pintar berbasis IoT
+            terintegrasi dengan kumpulan tools kustom herolabs.
+          </p>
+        </div>
+      </div>
+
+      <!-- TAB CONTENT: SMK LEGACY -->
+      <div
+        x-show="currentTab === 'smk'"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="opacity-0 translate-y-2"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        class="border border-white/5 bg-white/[0.01] rounded-xl p-4 space-y-2 max-w-3xl mx-auto"
+      >
+        <div
+          class="flex justify-between items-center border-b border-white/5 pb-2.5 text-xs"
+        >
+          <span class="text-slate-200 font-medium"
+            >Backend API Kasir Dira Kencong</span
+          ><span class="font-mono text-[10px] text-slate-500"
+            >Core API Integration</span
+          >
+        </div>
+        <div
+          class="flex justify-between items-center border-b border-white/5 pb-2.5 text-xs"
+        >
+          <span class="text-slate-200 font-medium"
+            >Prima Qur'an Mobile Application</span
+          ><span class="font-mono text-[10px] text-slate-500">Flutter</span>
+        </div>
+        <div
+          class="flex justify-between items-center border-b border-white/5 pb-2.5 text-xs"
+        >
+          <span class="text-slate-200 font-medium"
+            >E-PERPUS & e-point (Sistem Poin Pelanggaran)</span
+          ><span class="font-mono text-[10px] text-slate-500"
+            >School Management Suite</span
+          >
+        </div>
+        <div
+          class="flex justify-between items-center border-b border-white/5 pb-2.5 text-xs"
+        >
+          <span class="text-slate-200 font-medium"
+            >Multi-User Mini Gallery (Fitur Like & Komentar)</span
+          ><span class="font-mono text-[10px] text-slate-500"
+            >Fullstack System</span
+          >
+        </div>
+        <div class="flex justify-between items-center text-xs">
+          <span class="text-slate-200 font-medium"
+            >PPDB SMK Build, Prima-Hotel, IT-Show Profile, Java GUI Calc</span
+          ><span class="font-mono text-[10px] text-slate-500"
+            >Legacy Production</span
+          >
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE SKILLS ENVIROMENTS -->
+    <section
+      id="skills"
+      class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-16 border-t border-white/5 relative z-10"
+    >
+      <div class="text-center max-w-xl mx-auto mb-10">
+        <h2 class="text-xs font-bold uppercase tracking-widest text-brand mb-2">
+          // 03. COMPREHENSIVE STACK
+        </h2>
+        <p class="text-xl sm:text-2xl font-bold text-white">
+          Infrastruktur & Bahasa
+        </p>
+      </div>
+
+      <div
+        class="flex flex-wrap justify-center gap-2 max-w-3xl mx-auto text-xs font-mono"
+      >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >PHP</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Laravel</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >JavaScript</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Node.js</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >React</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Next.js</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Django</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Perl</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Java</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >C</span
+        >
+        <span
+          class="bg-emerald-950/20 border border-brand/30 text-emerald-400 px-3 py-1.5 rounded-lg font-bold"
+          >Docker</span
+        >
+        <span
+          class="bg-emerald-950/20 border border-brand/30 text-emerald-400 px-3 py-1.5 rounded-lg font-bold"
+          >Linux</span
+        >
+        <span
+          class="bg-emerald-950/20 border border-brand/30 text-emerald-400 px-3 py-1.5 rounded-lg font-bold"
+          >Proxmox VE</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Nginx</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Apache</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Mikrotik</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Socket.io</span
+        >
+        <span
+          class="bg-white/[0.02] border border-white/5 text-slate-300 px-3 py-1.5 rounded-lg"
+          >Git / GitHub</span
+        >
+      </div>
+    </section>
+
+    <!-- SAAS CLEAN FOOTER -->
+    <footer class="border-t border-white/5 bg-darkbg/40 relative z-10">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div
+          class="flex flex-col md:flex-row items-center justify-between gap-6"
+        >
+          <!-- Kiri: Logo & Rights -->
+          <div class="text-center md:text-left space-y-1">
+            <a
+              href="#"
+              class="text-sm font-bold tracking-wider text-white flex items-center justify-center md:justify-start gap-2"
+            >
+              <span class="w-1.5 h-1.5 rounded-full bg-brand"></span>
+              sanxnn._
+            </a>
+            <p class="text-xs text-slate-500 font-mono">
+              &copy; 2026 MADE WITH GEMINI.AI BY SANXNN
+            </p>
+          </div>
+
+          <!-- Kanan: Simple Navigation Map -->
+          <div
+            class="flex flex-wrap justify-center gap-x-8 gap-y-2 text-xs font-mono text-slate-400"
+          >
+            <a href="#about" class="hover:text-brand transition duration-150"
+              >About</a
+            >
+            <a
+              href="#experience"
+              class="hover:text-brand transition duration-150"
+              >Experience</a
+            >
+            <a href="#projects" class="hover:text-brand transition duration-150"
+              >Projects</a
+            >
+            <a href="#skills" class="hover:text-brand transition duration-150"
+              >Skills</a
+            >
+          </div>
+        </div>
       </div>
     </footer>
-
-    <!-- Hidden Overlay for Mobile Nav -->
-    <div class="nav-overlay" id="navOverlay"></div>
-
-    <script src="script.js"></script>
   </body>
 </html>
